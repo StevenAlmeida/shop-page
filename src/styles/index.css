@@ -1,11 +1,29 @@
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('../assets/JetBrainsMono-Regular.ttf');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('../assets/JetBrainsMono-Bold.ttf');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Calling Code';
+  src: url('../assets/CallingCode-Regular.otf');
+}
+
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --navbar-height: 65px;
+  --footer-height: 80px;
+
+  font-family: JetBrains Mono, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color: rgba(0, 0, 0, 0.87);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -13,56 +31,161 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
+* {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+  border: 0;
+  background: none;
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.nav {
+  position: sticky;
+  top: 0;
+  height: var(--navbar-height);
+  background-color: white;
+  z-index: 999;
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5);
+}
+
+.nav .wrapper {
+  height: 100%;
+  max-width: 1810px;
+  margin: auto;
+  padding-inline: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cart span {
+  color: black;
+  font-weight: bold;
+  font-size: 28px;
+  font-family: sans-serif;
+}
+
+.logo {
+  height: 100%;
+  padding: 10px;
+}
+
+.logo img {
+  height: 100%;
+}
+
+.hero {
+  height: calc(100vh - 35px - var(--navbar-height));
+  position: relative;
+}
+
+.hero img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-inline: 25%;
+  color: rgba(255, 255, 255, 0.87);
+  text-align: center;
+}
+
+.hero-text h2 {
+  color: white;
+  font-size: 60px;
+  text-transform: uppercase;
+}
+
+.products {
+  /* padding: 10px 50px; */
+  max-width: 1650px;
+  margin: 10px auto;
+  padding-inline: 50px;
+}
+
+.products h1 {
+  color: black;
+  font-size: 48px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+  gap: 30px 50px;
+}
+
+.product-button {
+  position: relative;
+}
+
+.product-button button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.product-button .img-wrapper {
+  padding: 10px;
+  background-color: white;
+}
+
+.product-button .img-wrapper img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: contain;
+}
+
+.product-button h2 {
+  font-size: 18px;
+  color: black;
+}
+
+.product-button p {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 16px;
+  height: 50px;
+}
+
+.footer {
+  background-color: black;
+  height: var(--footer-height);
+  padding: 20px;
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer ul {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.footer ul li a {
+  color: white;
+  text-decoration: none;
 }
