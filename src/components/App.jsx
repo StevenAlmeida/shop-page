@@ -3,18 +3,26 @@ import { useState } from 'react';
 import Footer from './Footer';
 import NavBar from './NavBar';
 import '../styles/index.css';
-
-const MAX_CART_CAPACITY = 999;
+import { MAX_CART_CAPACITY } from '../util';
 
 function App() {
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState(
+    JSON.parse(localStorage.getItem('cart')) ?? []
+  );
+
+  function updateCartInStorage(arr) {
+    const cartStr = JSON.stringify(arr);
+    localStorage.setItem('cart', cartStr);
+  }
 
   function updateItemInCart(itemId, quantity) {
     let index = cart.findIndex((element) => element.id === itemId);
-    if (!index) {
+    if (index === -1 && quantity > 0) {
       const actualQuantity = Math.min(quantity, MAX_CART_CAPACITY);
       const newItem = { id: itemId, quantity: actualQuantity };
-      setCart([...cart, newItem]);
+      const newCart = [...cart, newItem];
+      updateCartInStorage(newCart);
+      setCart(newCart);
       return;
     }
 
@@ -29,13 +37,18 @@ function App() {
     } else {
       newCart[index] = { id: itemId, quantity: newQuantity };
     }
+    updateCartInStorage(newCart);
     setCart(newCart);
+  }
+
+  function removeItemFromCart(itemId) {
+    updateItemInCart(itemId, -MAX_CART_CAPACITY - 1);
   }
 
   return (
     <>
       <NavBar cartAmount={cart.length} />
-      <Outlet updateItemInCart={updateItemInCart} />
+      <Outlet context={{ updateItemInCart, removeItemFromCart }} />
       <Footer />
     </>
   );

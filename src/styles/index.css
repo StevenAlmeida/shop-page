@@ -43,20 +43,30 @@ button {
   cursor: pointer;
 }
 
+li {
+  list-style-type: none;
+}
+
+.home-page,
+.product-page,
+.shopping-cart {
+  min-height: calc(100vh - var(--footer-height) - var(--navbar-height));
+}
+
 .nav {
   position: sticky;
   top: 0;
   height: var(--navbar-height);
   background-color: white;
   z-index: 999;
-  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.3);
 }
 
 .nav .wrapper {
   height: 100%;
-  max-width: 1810px;
+  max-width: 1840px;
   margin: auto;
-  padding-inline: 10px;
+  padding-inline: 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -71,7 +81,7 @@ button {
 
 .logo {
   height: 100%;
-  padding: 10px;
+  padding-block: 10px;
 }
 
 .logo img {
@@ -112,9 +122,8 @@ button {
 }
 
 .products {
-  /* padding: 10px 50px; */
   max-width: 1650px;
-  margin: 10px auto;
+  margin: 10px auto 50px auto;
   padding-inline: 50px;
 }
 
@@ -168,11 +177,80 @@ button {
   height: 50px;
 }
 
+.product-display {
+  display: grid;
+  grid-template-columns: min(50vh, 50vw) 1fr;
+  gap: min(2vw, 40px);
+  max-width: 1200px;
+  margin: auto;
+  padding: 50px 20px;
+}
+
+.product-img img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: contain;
+}
+
+.product-info h2,
+.product-info h3 {
+  font-size: 22px;
+  color: black;
+}
+
+.product-info h3 {
+  margin-block: 5px;
+}
+
+.quantity-selector {
+  border: 1px solid rgba(0, 0, 0, 0.78);
+  width: fit-content;
+  border-radius: 3px;
+  margin-top: 10px;
+}
+
+.quantity-selector input::-webkit-outer-spin-button,
+.quantity-selector input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.quantity-selector > * {
+  width: 30px;
+  height: 30px;
+  border: none;
+  font-size: 18px;
+  text-align: center;
+  font-family: inherit;
+}
+
+.quantity-selector input:focus {
+  outline: none;
+}
+
+.add-to-cart {
+  background-color: black;
+  color: white;
+  font-family: inherit;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 7px 10px;
+  border-radius: 3px;
+  transition: all 0.1s ease-in-out;
+  margin-block: 10px;
+  border: 2px solid black;
+}
+
+.add-to-cart:hover {
+  background-color: white;
+  color: black;
+}
+
 .footer {
   background-color: black;
   height: var(--footer-height);
   padding: 20px;
-  margin-top: 50px;
   display: flex;
   justify-content: center;
   align-items: center;

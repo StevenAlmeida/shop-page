@@ -24,8 +24,6 @@ function HomePage() {
     getProductData();
   }, []);
 
-  console.log(productList);
-
   return (
     <div className='home-page'>
       <div className='hero'>

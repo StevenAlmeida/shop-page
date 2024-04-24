@@ -3,4 +3,6 @@ const USDollar = new Intl.NumberFormat('en-US', {
   currency: 'USD',
 });
 
-export { USDollar };
+const MAX_CART_CAPACITY = 99;
+
+export { USDollar, MAX_CART_CAPACITY };
