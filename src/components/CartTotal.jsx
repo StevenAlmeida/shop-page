@@ -1,4 +1,5 @@
 import CostDisplay from './CostDisplay';
+import PropTypes from 'prop-types';
 
 function CartTotal({ cart, productData }) {
   const shipping = 8.5;
@@ -26,5 +27,10 @@ function CartTotal({ cart, productData }) {
     </div>
   );
 }
+
+CartTotal.propTypes = {
+  cart: PropTypes.array,
+  productData: PropTypes.array,
+};
 
 export default CartTotal;

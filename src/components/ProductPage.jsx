@@ -9,7 +9,6 @@ function ProductPage() {
   const { updateItemInCart } = useOutletContext();
   const [productData, setProductData] = useState(null);
   const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(true);
   const [quantity, setQuantity] = useState(1);
 
   useEffect(() => {
@@ -23,8 +22,6 @@ function ProductPage() {
         setProductData(json);
       } catch (err) {
         setError(err);
-      } finally {
-        setLoading(false);
       }
     }
 
@@ -38,7 +35,6 @@ function ProductPage() {
 
   return (
     <div className='product-page'>
-      {loading && <h1>Loading...</h1>}
       {error && <h1>Error</h1>}
       {productData && (
         <div className='product-display'>

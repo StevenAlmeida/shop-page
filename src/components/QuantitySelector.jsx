@@ -1,4 +1,5 @@
 import { MAX_CART_CAPACITY } from '../util';
+import PropTypes from 'prop-types';
 
 function QuantitySelector({ value, setValue }) {
   function update(quantity) {
@@ -28,5 +29,10 @@ function QuantitySelector({ value, setValue }) {
     </div>
   );
 }
+
+QuantitySelector.propTypes = {
+  value: PropTypes.number,
+  setValue: PropTypes.func,
+};
 
 export default QuantitySelector;

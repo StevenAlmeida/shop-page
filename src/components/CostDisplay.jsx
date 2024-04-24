@@ -1,4 +1,5 @@
 import { USDollar } from '../util';
+import PropTypes from 'prop-types';
 
 function CostDisplay({ title, cost }) {
   return (
@@ -8,5 +9,10 @@ function CostDisplay({ title, cost }) {
     </div>
   );
 }
+
+CostDisplay.propTypes = {
+  title: PropTypes.string,
+  cost: PropTypes.number,
+};
 
 export default CostDisplay;

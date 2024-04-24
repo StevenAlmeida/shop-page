@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { USDollar } from '../util';
+import PropTypes from 'prop-types';
 
 function ProductButton({ product }) {
   const navigate = useNavigate();
@@ -17,5 +18,9 @@ function ProductButton({ product }) {
     </div>
   );
 }
+
+ProductButton.propTypes = {
+  product: PropTypes.object,
+};
 
 export default ProductButton;

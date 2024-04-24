@@ -1,6 +1,7 @@
 import { USDollar } from '../util';
 import QuantitySelector from './QuantitySelector';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 function CartItem({ product, quantity, updateItemInCart, removeItemFromCart }) {
   function setQuantityInCart(value) {
@@ -32,5 +33,12 @@ function CartItem({ product, quantity, updateItemInCart, removeItemFromCart }) {
     </div>
   );
 }
+
+CartItem.propTypes = {
+  product: PropTypes.object,
+  quantity: PropTypes.number,
+  updateItemInCart: PropTypes.func,
+  removeItemFromCart: PropTypes.func,
+};
 
 export default CartItem;

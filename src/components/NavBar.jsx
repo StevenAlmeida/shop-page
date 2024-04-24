@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
+import PropTypes from 'prop-types';
 
 function NavBar({ cartSize }) {
   return (
@@ -23,5 +24,9 @@ function NavBar({ cartSize }) {
     </div>
   );
 }
+
+NavBar.propTypes = {
+  cartSize: PropTypes.number,
+};
 
 export default NavBar;

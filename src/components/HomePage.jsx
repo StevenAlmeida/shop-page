@@ -5,7 +5,6 @@ import ProductButton from './ProductButton';
 function HomePage() {
   const [productList, setProductList] = useState(null);
   const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function getProductData() {
@@ -16,8 +15,6 @@ function HomePage() {
         setProductList(json);
       } catch (err) {
         setError(err);
-      } finally {
-        setLoading(false);
       }
     }
 
@@ -39,7 +36,6 @@ function HomePage() {
         </div>
       </div>
 
-      {loading && <h1>Loading...</h1>}
       {error && <h1>Error</h1>}
       {productList && (
         <div className='products'>

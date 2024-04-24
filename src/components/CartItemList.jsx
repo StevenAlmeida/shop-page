@@ -1,4 +1,5 @@
 import CartItem from './CartItem';
+import PropTypes from 'prop-types';
 
 function CartItemList({
   cart,
@@ -23,5 +24,12 @@ function CartItemList({
     </div>
   );
 }
+
+CartItemList.propTypes = {
+  cart: PropTypes.array,
+  productData: PropTypes.array,
+  updateItemInCart: PropTypes.func,
+  removeItemFromCart: PropTypes.func,
+};
 
 export default CartItemList;
