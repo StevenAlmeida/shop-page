@@ -32,7 +32,7 @@ function ProductPage() {
   }, [productId]);
 
   function addToCart() {
-    updateItemInCart(productId, quantity);
+    updateItemInCart(parseInt(productId), quantity, true);
     navigate('/cart');
   }
 
@@ -49,7 +49,7 @@ function ProductPage() {
             <h2>{productData.title}</h2>
             <h3>{USDollar.format(productData.price)}</h3>
             <QuantitySelector value={quantity} setValue={setQuantity} />
-            <button className='add-to-cart' onClick={addToCart}>
+            <button className='btn' onClick={addToCart}>
               ADD TO CART
             </button>
             <p>{productData.description}</p>

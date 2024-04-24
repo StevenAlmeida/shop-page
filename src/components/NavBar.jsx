@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 
-function NavBar({ cartAmount }) {
+function NavBar({ cartSize }) {
   return (
     <div className='nav'>
       <div className='wrapper'>
@@ -9,11 +11,14 @@ function NavBar({ cartAmount }) {
             <img src='/logo.svg' alt='' />
           </Link>
         </div>
-        <div className='cart'>
-          <Link to='/cart' style={{ textDecoration: 'none' }}>
-            <span>{cartAmount}</span>
-          </Link>
-        </div>
+        <Link to='/cart' className='cart'>
+          <FontAwesomeIcon icon={faCartShopping} />
+          {cartSize > 0 && (
+            <div className='cart-size'>
+              <span>{cartSize}</span>
+            </div>
+          )}
+        </Link>
       </div>
     </div>
   );

@@ -15,7 +15,7 @@ function App() {
     localStorage.setItem('cart', cartStr);
   }
 
-  function updateItemInCart(itemId, quantity) {
+  function updateItemInCart(itemId, quantity, add = false) {
     let index = cart.findIndex((element) => element.id === itemId);
     if (index === -1 && quantity > 0) {
       const actualQuantity = Math.min(quantity, MAX_CART_CAPACITY);
@@ -27,11 +27,10 @@ function App() {
     }
 
     const cartItem = cart[index];
-    const newQuantity = Math.min(
-      cartItem.quantity + quantity,
-      MAX_CART_CAPACITY
-    );
+    let newQuantity = add ? cartItem.quantity + quantity : quantity;
+    newQuantity = Math.min(newQuantity, MAX_CART_CAPACITY);
     const newCart = [...cart];
+
     if (newQuantity <= 0) {
       newCart.splice(index, 1);
     } else {
@@ -42,13 +41,13 @@ function App() {
   }
 
   function removeItemFromCart(itemId) {
-    updateItemInCart(itemId, -MAX_CART_CAPACITY - 1);
+    updateItemInCart(itemId, 0);
   }
 
   return (
     <>
-      <NavBar cartAmount={cart.length} />
-      <Outlet context={{ updateItemInCart, removeItemFromCart }} />
+      <NavBar cartSize={cart.length} />
+      <Outlet context={{ cart, updateItemInCart, removeItemFromCart }} />
       <Footer />
     </>
   );
