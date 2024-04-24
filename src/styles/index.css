@@ -10,11 +10,6 @@
   font-weight: bold;
 }
 
-@font-face {
-  font-family: 'Calling Code';
-  src: url('../assets/CallingCode-Regular.otf');
-}
-
 :root {
   --navbar-height: 65px;
   --footer-height: 80px;
@@ -45,6 +40,15 @@ button {
 
 li {
   list-style-type: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: black;
 }
 
 .home-page,
@@ -148,7 +152,6 @@ li {
 }
 
 .products h1 {
-  color: black;
   font-size: 48px;
 }
 
@@ -184,7 +187,6 @@ li {
 
 .product-button h2 {
   font-size: 18px;
-  color: black;
 }
 
 .product-button p {
@@ -216,7 +218,6 @@ li {
 .product-info h2,
 .product-info h3 {
   font-size: 22px;
-  color: black;
 }
 
 .product-info h3 {
@@ -274,13 +275,14 @@ li {
   align-items: center;
   min-height: inherit;
   font-size: 1.5em;
+  text-align: center;
 }
 
 .shopping-cart .wrapper {
   max-width: 1200px;
   margin: auto;
   display: grid;
-  grid-template-columns: 1fr 400px;
+  grid-template-columns: 1fr min(35%, 400px);
   gap: min(2vw, 40px);
   padding-inline: 20px;
 }
@@ -317,8 +319,9 @@ li {
 }
 
 .remove {
-  font-size: 12px;
+  font-size: 14px;
   text-decoration: underline;
+  font-family: inherit;
 }
 
 .cart-item .quantity-selector {
@@ -356,6 +359,14 @@ li {
   padding-block: 10px;
 }
 
+.cost-display .title {
+  color: black;
+}
+
+.cost-display .cost {
+  font-weight: bold;
+}
+
 .total:not(:last-of-type) {
   border-bottom: 1px solid rgba(0, 0, 0, 0.87);
 }
@@ -371,7 +382,7 @@ li {
 
 .footer ul {
   display: flex;
-  gap: 30px;
+  gap: 10px 30px;
   justify-content: center;
   flex-wrap: wrap;
 }
@@ -379,4 +390,22 @@ li {
 .footer ul li a {
   color: white;
   text-decoration: none;
+}
+
+@media (width <= 700px) {
+  .shopping-cart .wrapper {
+    grid-template-columns: unset;
+    grid-template-rows: auto 1fr;
+  }
+
+  .cart-total {
+    max-width: 400px;
+    width: 100%;
+    margin: auto;
+    position: static;
+  }
+
+  .cart-items {
+    order: 1;
+  }
 }
